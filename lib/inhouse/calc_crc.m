@@ -18,7 +18,8 @@ function [crc_bits] = calc_crc(in_bits, crc_type)
 
   [q, r] = deconv(msg, crc_poly);
   
-  crc_bits = mod(r, 2)(end - crc_len + 1:end);
+  crc_bits = mod(r, 2);
+  crc_bits = crc_bits (end - crc_len + 1:end);
   
 end
 

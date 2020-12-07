@@ -1,4 +1,7 @@
- pkg load communications
+if exist('OCTAVE_VERSION', 'builtin') ~= 0 
+    pkg load communications
+end 
+
  test_payload = {   [1], ...
                     de2bi(hex2dec('C0FFEE'), 24, 'left-msb'), ...
                     de2bi(hex2dec('DEADBEAF'), 32, 'left-msb')};
@@ -15,7 +18,7 @@
     crc16 = calc_crc(test_payload{idx}, 16);
     assert(all(crc16 == expected_crc16{idx}));
     crc24A = calc_crc(test_payload{idx}, '24A');
-   assert(all(crc24A == expected_crc24A{idx}));
+    assert(all(crc24A == expected_crc24A{idx}));
  end 
  
  %!test
