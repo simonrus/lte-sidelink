@@ -3,16 +3,20 @@ function [cw_seq] = convenc_tb(msg, trellis)
   %The following function encodes message using full Convolutional Tail Biting 
   %coding
   %   trellis - trellis shall be created using poly2trellis function
-  
+  if (size(msg,1) == 1)
+      error("convenc_tb: accept only vector-column");
+  end
+      
   M = log2(trellis.numStates); % number of registers
   
   if (length(msg) >= M)
     % set state to last M information bitset
-    istate = bi2de(msg(end - M + 1:end), 'right-msb'); % set inital state !(right msb)
+    istate = bi2de(msg(end - M + 1:end).', 'right-msb'); % set inital state !(right msb)
   else
     assert("Failed, need an update");
   end
 
   [cw_seq, final_state] = convenc(msg, trellis,[], istate);
   assert(final_state == istate, "Tailbiting encoding failed: start and end state differs");
+  %cw_seq = cw_seq .';
 end
