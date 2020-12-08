@@ -40,3 +40,7 @@ else
     % create system object
 end
   
+%% Unittest declaration for Octave (https://wiki.octave.org/Tests)
+%!test
+ %! assert(1)
+

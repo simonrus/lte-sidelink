@@ -44,3 +44,8 @@ else
     end
     save('convenc_tb_tv.mat','tv','-v7.3');
 end
+
+%% Unittest declaration for Octave (https://wiki.octave.org/Tests)
+%!test
+ %! assert(1)
+

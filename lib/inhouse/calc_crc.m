@@ -22,8 +22,3 @@ function [crc_bits] = calc_crc(in_bits, crc_type)
   crc_bits = crc_bits (end - crc_len + 1:end);
   
 end
-
-
-%% Here is small wrapper for Octave unit tests
-%!test 
-%! calc_crc_test

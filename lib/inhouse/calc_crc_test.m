@@ -21,5 +21,7 @@ end
     assert(all(crc24A == expected_crc24A{idx}));
  end 
  
- %!test
+%% Unittest declaration for Octave (https://wiki.octave.org/Tests)
+%!test
  %! assert(1)
+
